@@ -6,8 +6,10 @@
             "email": "yuri.zhulyov@gmail.com"
         }
     ],
+    "description": "Brain games app",
+    "license": "open",
     "require": {},
     "bin": [
-        "./bin/brain-games.php"
+        "./bin/brain-games"
     ]
 }
