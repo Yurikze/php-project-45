@@ -1,0 +1,13 @@
+{
+    "name": "hexlet/code",
+    "authors": [
+        {
+            "name": "Yuri Zhulev",
+            "email": "yuri.zhulyov@gmail.com"
+        }
+    ],
+    "require": {},
+    "bin": [
+        "./bin/brain-games.php"
+    ]
+}
