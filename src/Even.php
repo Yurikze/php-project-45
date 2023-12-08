@@ -9,7 +9,7 @@ function evenGame(string $userName)
 {
     $winStreak = 0;
     line('Answer "yes" if the number is even, otherwise answer "no".');
-    $randomNumber = rand(0, 100);
+    $randomNumber = rand(1, 100);
     while ($winStreak < 3) {
         $answer = prompt("Question: {$randomNumber}");
         line("Your answer: {$answer}");
