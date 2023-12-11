@@ -9,8 +9,6 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use BrainGames\Cli;
-use BrainGames\Calc;
+use function BrainGames\Games\Calc\calcGame as calcGame;
 
-$userName = Cli\greet();
-Calc\calcGame($userName);
+calcGame();

@@ -9,8 +9,6 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-use BrainGames\Cli;
-use BrainGames\Even;
+use function BrainGames\Games\Even\evenGame as evenGame;
 
-$userName = Cli\greet();
-Even\evenGame($userName);
+evenGame();

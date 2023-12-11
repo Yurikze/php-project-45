@@ -1,20 +1,21 @@
 <?php
 
-namespace BrainGames\Calc;
+namespace BrainGames\Games\Calc;
 
 use function cli\line;
 use function cli\prompt;
+use function BrainGames\Engine\gameEngine as gameEngine;
 
-function calcGame(string $userName)
+function calcGame(): void
 {
-    $winStreak = 0;
+    [$userName, $rounds] = gameEngine();
     line('What is the result of the expression?');
     $operators = ['+', '-', '*'];
-    $currentOperator = $operators[rand(0, 2)];
-    $randomNumber1 = rand(0, 10);
-    $randomNumber2 = rand(0, 10);
-    $result = 0;
-    while ($winStreak < 3) {
+    for ($i = 0; $i < $rounds; $i++) {
+        $result = 0;
+        $currentOperator = $operators[rand(0, 2)];
+        $randomNumber1 = rand(0, 10);
+        $randomNumber2 = rand(0, 10);
         $answer = intval(prompt("Question: {$randomNumber1} {$currentOperator} {$randomNumber2}"), 10);
         line("Your answer: {$answer}");
         switch ($currentOperator) {
@@ -35,11 +36,12 @@ function calcGame(string $userName)
             $currentOperator = $operators[rand(0, 2)];
             $randomNumber1 = rand(0, 10);
             $randomNumber2 = rand(0, 10);
-            $winStreak += 1;
         } else {
             line("'{$answer}' is wrong answer ;(. Correct answer was '{$result}'");
             line("Let's try again, {$userName}");
             return;
         }
     }
+    line("Congratulations, {$userName}!");
+    return;
 }
