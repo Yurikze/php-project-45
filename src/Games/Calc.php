@@ -11,7 +11,7 @@ function calcGame(): void
     [$userName, $rounds] = gameEngine();
     line('What is the result of the expression?');
     $operators = ['+', '-', '*'];
-    for ($i = 0; $i < $rounds; $i++) {
+    for ($i = 1; $i <= $rounds; $i++) {
         $result = 0;
         $currentOperator = $operators[rand(0, 2)];
         $randomNumber1 = rand(0, 10);
@@ -33,9 +33,6 @@ function calcGame(): void
         }
         if ($result === $answer) {
             line('Correct!');
-            $currentOperator = $operators[rand(0, 2)];
-            $randomNumber1 = rand(0, 10);
-            $randomNumber2 = rand(0, 10);
         } else {
             line("'{$answer}' is wrong answer ;(. Correct answer was '{$result}'");
             line("Let's try again, {$userName}");
