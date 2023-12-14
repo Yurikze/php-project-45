@@ -10,5 +10,8 @@
 ### Calc game representation asciinema
 [Calc game](https://asciinema.org/a/zPbTFQWV5S60SoIZRN5J3jddm)
 
-### Calc game representation asciinema
+### Gcd game representation asciinema
 [Gcd game](https://asciinema.org/a/to1bTNNaE4UBt3yha4vjUlugb)
+
+### Progression game representation asciinema
+[Progression game](https://asciinema.org/a/xH7snfPmT9EDvjwnRMl3pRE4c)
