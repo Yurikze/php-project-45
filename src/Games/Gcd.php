@@ -26,7 +26,7 @@ function gcdGame(): void
             line('Correct!');
         } else {
             line("'{$answer}' is wrong answer ;(. Correct answer was '{$greaterDiv}'");
-            line("Let's try again, {$userName}");
+            line("Let's try again, {$userName}!");
             return;
         }
     }
