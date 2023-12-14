@@ -11,7 +11,6 @@ function primeGame(): void
     [$userName, $rounds] = gameEngine();
     line('Answer "yes" if given number is prime. Otherwise answer "no".');
     for ($i = 1; $i <= $rounds; $i++) {
-
         $randomNumber = rand(2, 20);
         $isPrime = true;
         for ($j = 2; $j <= $randomNumber; $j++) {

@@ -11,7 +11,6 @@ function progressionGame(): void
     [$userName, $rounds] = gameEngine();
     line('What number is missing in the progression?');
     for ($i = 1; $i <= $rounds; $i++) {
-
         $start = rand(0, 5);
         $step = rand(1, 5);
         $quantity = rand(5, 11);
