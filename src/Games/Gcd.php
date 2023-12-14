@@ -20,9 +20,9 @@ function gcdGame(): void
                 $greaterDiv = $j;
             }
         }
-        $answer = intval(prompt("Question: {$number1} {$number2}"), 10);
+        $answer = prompt("Question: {$number1} {$number2}");
         line("Your answer: {$answer}");
-        if ($answer === $greaterDiv) {
+        if (intval($answer, 10) === $greaterDiv) {
             line('Correct!');
         } else {
             line("'{$answer}' is wrong answer ;(. Correct answer was '{$greaterDiv}'");

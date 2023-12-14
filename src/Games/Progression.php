@@ -23,10 +23,10 @@ function progressionGame(): void
         $progressionArr[$hiddenIndex] = '..';
         $questionString = implode(' ', $progressionArr);
 
-        $answer = intval(prompt("Question: {$questionString}"), 10);
+        $answer = prompt("Question: {$questionString}");
         line("Your answer: {$answer}");
 
-        if ($answer === $hiddenElement) {
+        if (intval($answer, 10) === $hiddenElement) {
             line('Correct!');
         } else {
             line("'{$answer}' is wrong answer ;(. Correct answer was '{$hiddenElement}'.");

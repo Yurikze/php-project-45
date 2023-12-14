@@ -17,12 +17,12 @@ function evenGame(): void
         $isEven = $randomNumber % 2 === 0;
         if ($isEven && $answer === 'yes' || !$isEven && $answer === 'no') {
             line('Correct!');
-        } elseif ($isEven && $answer === 'no') {
-            line("'no' is wrong answer ;(. Correct answer was 'yes'.");
+        } elseif ($isEven && $answer !== 'yes') {
+            line("'{$answer}' is wrong answer ;(. Correct answer was 'yes'.");
             line("Let's try again, {$userName}!");
             return;
-        } else {
-            line("'yes' is wrong answer ;(. Correct answer was 'no'.");
+        } elseif (!$isEven && $answer !== 'no') {
+            line("'{$answer}' is wrong answer ;(. Correct answer was 'no'.");
             line("Let's try again, {$userName}!");
             return;
         }

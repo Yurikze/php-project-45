@@ -16,7 +16,7 @@ function calcGame(): void
         $currentOperator = $operators[rand(0, 2)];
         $randomNumber1 = rand(0, 10);
         $randomNumber2 = rand(0, 10);
-        $answer = intval(prompt("Question: {$randomNumber1} {$currentOperator} {$randomNumber2}"), 10);
+        $answer = prompt("Question: {$randomNumber1} {$currentOperator} {$randomNumber2}");
         line("Your answer: {$answer}");
         switch ($currentOperator) {
             case '+':
@@ -31,7 +31,7 @@ function calcGame(): void
             default:
                 break;
         }
-        if ($result === $answer) {
+        if ($result === intval($answer, 10)) {
             line('Correct!');
         } else {
             line("'{$answer}' is wrong answer ;(. Correct answer was '{$result}'");
