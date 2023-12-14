@@ -30,5 +30,6 @@ function gcdGame(): void
             return;
         }
     }
+    line("Congratulations, {$userName}!");
     return;
 }
