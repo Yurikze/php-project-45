@@ -35,7 +35,7 @@ function calcGame(): void
             line('Correct!');
         } else {
             line("'{$answer}' is wrong answer ;(. Correct answer was '{$result}'");
-            line("Let's try again, {$userName}");
+            line("Let's try again, {$userName}!");
             return;
         }
     }
