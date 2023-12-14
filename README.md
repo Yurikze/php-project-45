@@ -15,3 +15,6 @@
 
 ### Progression game representation asciinema
 [Progression game](https://asciinema.org/a/xH7snfPmT9EDvjwnRMl3pRE4c)
+
+### Prime game representation asciinema
+[Prime game](https://asciinema.org/a/2HyMm9J5j7n9oP3VTc6pquONC)
