@@ -3,6 +3,6 @@
 
 require_once './src/AutoloadPath.php';
 
-use function BrainGames\Games\Even\evenGame;
+use function BrainGames\Engine\gameEngine;
 
-evenGame();
+gameEngine('even');
