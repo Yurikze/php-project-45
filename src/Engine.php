@@ -42,9 +42,9 @@ function gameEngine(string $gameName)
             [$correctAnswer, $questionString] = progressionGame();
             $userAnswer = prompt("Question: {$questionString}");
         }
-
         line("Your answer: {$userAnswer}");
-        if (gettype($correctAnswer) === 'integer' ? intval($userAnswer, 10) === $correctAnswer : $userAnswer === $correctAnswer) {
+        $userAnswer = gettype($correctAnswer) === 'integer' ? intval($userAnswer, 10) : $userAnswer;
+        if ($userAnswer === $correctAnswer) {
             line('Correct!');
         } else {
             line("'{$userAnswer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'");
