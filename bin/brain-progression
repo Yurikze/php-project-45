@@ -3,6 +3,6 @@
 
 require_once './src/AutoloadPath.php';
 
-use function BrainGames\Games\Progression\progressionGame;
+use function BrainGames\Engine\gameEngine;
 
-progressionGame();
+gameEngine('progression');

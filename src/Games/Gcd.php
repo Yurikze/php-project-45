@@ -6,30 +6,23 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\Engine\gameEngine as gameEngine;
 
-function gcdGame(): void
+function gcdGame(): array
 {
-    [$userName, $rounds] = gameEngine();
-    line('Find the greatest common divisor of given numbers.');
-    for ($i = 0; $i < $rounds; $i++) {
-        $number1 = rand(1, 100);
-        $number2 = rand(1, 100);
-        $upperBorder = $number1 < $number2 ? $number1 : $number2;
-        $greaterDiv = 1;
-        for ($j = 2; $j <= $upperBorder; $j++) {
-            if ($number1 % $j === 0 && $number2 % $j === 0) {
-                $greaterDiv = $j;
-            }
-        }
-        $answer = prompt("Question: {$number1} {$number2}");
-        line("Your answer: {$answer}");
-        if (intval($answer, 10) === $greaterDiv) {
-            line('Correct!');
-        } else {
-            line("'{$answer}' is wrong answer ;(. Correct answer was '{$greaterDiv}'");
-            line("Let's try again, {$userName}!");
-            return;
+    $number1 = rand(1, 100);
+    $number2 = rand(1, 100);
+    $upperBorder = $number1 < $number2 ? $number1 : $number2;
+    $greaterDiv = 1;
+    for ($j = 2; $j <= $upperBorder; $j++) {
+        if ($number1 % $j === 0 && $number2 % $j === 0) {
+            $greaterDiv = $j;
         }
     }
-    line("Congratulations, {$userName}!");
-    return;
+    // if (intval($answer, 10) === $greaterDiv) {
+    //     line('Correct!');
+    // } else {
+    //     line("'{$answer}' is wrong answer ;(. Correct answer was '{$greaterDiv}'");
+    //     line("Let's try again, {$userName}!");
+    //     return;
+    // }
+    return [$greaterDiv, $number1, $number2];
 }
