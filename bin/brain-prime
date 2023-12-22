@@ -3,6 +3,8 @@
 
 require_once 'src/AutoloadPath.php';
 
+use BrainGames\Games\Prime;
 use function BrainGames\Engine\gameEngine;
 
-gameEngine('prime');
+$gameRules = Prime\gameRules();
+gameEngine('prime', $gameRules);

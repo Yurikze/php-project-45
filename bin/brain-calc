@@ -3,6 +3,8 @@
 
 require_once 'src/AutoloadPath.php';
 
+use BrainGames\Games\Calc;
 use function BrainGames\Engine\gameEngine;
 
-gameEngine('calc');
+$gameRules = Calc\gameRules();
+gameEngine('calc', $gameRules);

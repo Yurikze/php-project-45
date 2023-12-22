@@ -29,3 +29,8 @@ function calcGame(): array
         $operator
     ];
 }
+
+function gameRules(): string
+{
+    return 'What is the result of the expression?';
+}

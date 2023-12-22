@@ -11,20 +11,10 @@ use function BrainGames\Games\Gcd\gcdGame;
 use function BrainGames\Games\Prime\primeGame;
 use function BrainGames\Games\Progression\progressionGame;
 
-function gameEngine(string $gameName)
+function gameEngine(string $gameName, string $gameRules)
 {
     $userName = greet();
-    if ($gameName === 'calc') {
-        line('What is the result of the expression?');
-    } elseif ($gameName === 'even') {
-        line('Answer "yes" if the number is even, otherwise answer "no".');
-    } elseif ($gameName === 'gcd') {
-        line('Find the greatest common divisor of given numbers.');
-    } elseif ($gameName === 'prime') {
-        line('Answer "yes" if given number is prime. Otherwise answer "no".');
-    } elseif ($gameName === 'progression') {
-        line('What number is missing in the progression?');
-    }
+    line($gameRules);
     for ($i = 1; $i <= 3; $i++) {
         if ($gameName === 'calc') {
             [$correctAnswer, $num1, $num2, $operator] = calcGame();

@@ -17,12 +17,10 @@ function gcdGame(): array
             $greaterDiv = $j;
         }
     }
-    // if (intval($answer, 10) === $greaterDiv) {
-    //     line('Correct!');
-    // } else {
-    //     line("'{$answer}' is wrong answer ;(. Correct answer was '{$greaterDiv}'");
-    //     line("Let's try again, {$userName}!");
-    //     return;
-    // }
     return [$greaterDiv, $number1, $number2];
+}
+
+function gameRules(): string
+{
+    return 'Find the greatest common divisor of given numbers.';
 }

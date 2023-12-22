@@ -3,6 +3,8 @@
 
 require_once 'src/AutoloadPath.php';
 
+use BrainGames\Games\Gcd;
 use function BrainGames\Engine\gameEngine;
 
-gameEngine('gcd');
+$gameRules = Gcd\gameRules();
+gameEngine('gcd', $gameRules);

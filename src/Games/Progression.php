@@ -20,3 +20,8 @@ function progressionGame(): array
 
     return [$hiddenElement, $questionString];
 }
+
+function gameRules(): string
+{
+    return 'What number is missing in the progression?';
+}

@@ -3,6 +3,8 @@
 
 require_once 'src/AutoloadPath.php';
 
+use BrainGames\Games\Progression;
 use function BrainGames\Engine\gameEngine;
 
-gameEngine('progression');
+$gameRules = Progression\gameRules();
+gameEngine('progression', $gameRules);

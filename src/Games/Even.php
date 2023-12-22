@@ -9,3 +9,8 @@ function evenGame(): array
     $correctAnswer = $isEven ? 'yes' : 'no';
     return [$correctAnswer, $randomNumber];
 }
+
+function gameRules(): string
+{
+    return 'Answer "yes" if the number is even, otherwise answer "no".';
+}

@@ -14,3 +14,8 @@ function primeGame(): array
     $correctAnswer = $isPrime ? 'yes' : 'no';
     return [$correctAnswer, $randomNumber];
 }
+
+function gameRules(): string
+{
+    return 'Answer "yes" if given number is prime. Otherwise answer "no".';
+}
