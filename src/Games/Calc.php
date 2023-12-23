@@ -25,7 +25,6 @@ function gameCorrectAnswer(array $gameData): int
             return $correctAnswer = $randomNumber1 + $randomNumber2;
         case '-':
             return $correctAnswer = $randomNumber1 - $randomNumber2;
-            break;
         case '*':
             return $correctAnswer = $randomNumber1 * $randomNumber2;
         default:
