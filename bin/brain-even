@@ -3,21 +3,6 @@
 
 require_once __DIR__ . '/../src/AutoloadPath.php';
 
-use function cli\line;
-use function BrainGames\Cli\greet;
 use BrainGames\Games\Even;
-use function BrainGames\Engine\gameEngine;
 
-$userName = greet();
-$gameRules = Even\gameRules();
-line($gameRules);
-for ($i = 0; $i < 3; $i++) {
-  $roundData = Even\gameData();
-  $roundQuestion = Even\gameQuestion($roundData);
-  $roundCorrectAnswer = Even\gameCorrectAnswer($roundData);
-  $roundCompleted = gameEngine($userName, $roundQuestion, $roundCorrectAnswer);
-  if (!$roundCompleted) {
-    return;
-  }
-}
-line("Congratulations, {$userName}!");
+Even\game();
