@@ -5,11 +5,10 @@ namespace BrainGames\Engine;
 use function cli\line;
 use function cli\prompt;
 
-function gameEngine(string $userName, string $question, string | int $correctAnswer): bool
+function gameEngine(string $userName, string $question, string $correctAnswer): bool
 {
     $userAnswer = prompt($question);
     line("Your answer: {$userAnswer}");
-    $userAnswer = gettype($correctAnswer) === 'integer' ? intval($userAnswer, 10) : $userAnswer;
     if ($userAnswer === $correctAnswer) {
         line('Correct!');
         return true;

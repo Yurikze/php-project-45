@@ -16,7 +16,7 @@ function gameData(): int
     return rand(1, 100);
 }
 
-function isEven(int $number)
+function isEven(int $number): bool
 {
     return $number % 2 === 0;
 }
@@ -31,7 +31,7 @@ function gameQuestion(int $randomNumber): string
     return "Question: {$randomNumber}";
 }
 
-function game()
+function game(): void
 {
     $userName = greet();
     $gameRules = gameRules();
@@ -46,4 +46,5 @@ function game()
         }
     }
     line("Congratulations, {$userName}!");
+    return;
 }

@@ -2,6 +2,10 @@
 
 namespace BrainGames\Games\Calc;
 
+use function BrainGames\Cli\greet;
+use function BrainGames\Engine\gameEngine;
+use function cli\line;
+
 function gameRules(): string
 {
     return 'What is the result of the expression?';
@@ -16,24 +20,47 @@ function gameData(): array
     return [$randomNumber1, $randomNumber2, $operator];
 }
 
-function gameCorrectAnswer(array $gameData): int
+function calc(array $gameData): int
 {
-    [$randomNumber1, $randomNumber2, $operator] = $gameData;
-    $correctAnswer = 0;
+    [$number1, $number2, $operator] = $gameData;
+    $result = 0;
     switch ($operator) {
         case '+':
-            return $correctAnswer = $randomNumber1 + $randomNumber2;
+            return $result = $number1 + $number2;
         case '-':
-            return $correctAnswer = $randomNumber1 - $randomNumber2;
+            return $result = $number1 - $number2;
         case '*':
-            return $correctAnswer = $randomNumber1 * $randomNumber2;
+            return $result = $number1 * $number2;
         default:
-            return $correctAnswer;
+            return $result;
     }
+}
+
+function gameCorrectAnswer(array $gameData): string
+{
+    return strval(calc($gameData));
 }
 
 function gameQuestion(array $gameData): string
 {
     [$randomNumber1, $randomNumber2, $operator] = $gameData;
     return "Question: {$randomNumber1} {$operator} {$randomNumber2}";
+}
+
+function game(): void
+{
+    $userName = greet();
+    $gameRules = gameRules();
+    line($gameRules);
+    for ($i = 0; $i < 3; $i++) {
+        $roundData = gameData();
+        $roundQuestion = gameQuestion($roundData);
+        $roundCorrectAnswer = gameCorrectAnswer($roundData);
+        $roundCompleted = gameEngine($userName, $roundQuestion, $roundCorrectAnswer);
+        if (!$roundCompleted) {
+            return;
+        }
+    }
+    line("Congratulations, {$userName}!");
+    return;
 }

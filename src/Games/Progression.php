@@ -2,6 +2,10 @@
 
 namespace BrainGames\Games\Progression;
 
+use function BrainGames\Cli\greet;
+use function BrainGames\Engine\gameEngine;
+use function cli\line;
+
 function gameRules(): string
 {
     return 'What number is missing in the progression?';
@@ -11,23 +15,45 @@ function gameData(): array
 {
     $start = rand(0, 5);
     $step = rand(1, 5);
-    $quantity = rand(5, 11);
-    $hiddenIndex = rand(0, $quantity - 1);
-    $progressionArr = range($start, $start + $step * ($quantity - 1), $step);
-    return [$progressionArr, $hiddenIndex];
+    $length = rand(5, 11);
+    $hiddenIndex = rand(0, $length - 1);
+    return [$start, $step, $length, $hiddenIndex];
 }
 
-function gameCorrectAnswer(array $gameData): int
+function generateProgression(int $start, int $step, int $length)
 {
-    [$progressionArr, $hiddenIndex] = $gameData;
-    $hiddenElement = $progressionArr[$hiddenIndex];
-    return $hiddenElement;
+    $progression = range($start, $start + $step * ($length - 1), $step);
+    return $progression;
 }
 
-function gameQuestion(array $gameData): string
+function gameCorrectAnswer(array $progression, int $hiddenIndex): int
 {
-    [$progressionArr, $hiddenIndex] = $gameData;
-    $progressionArr[$hiddenIndex] = '..';
-    $questionString = implode(' ', $progressionArr);
+    $hiddenElement = $progression[$hiddenIndex];
+    return strval($hiddenElement);
+}
+
+function gameQuestion(array $progression, int $hiddenIndex): string
+{
+    $progression[$hiddenIndex] = '..';
+    $questionString = implode(' ', $progression);
     return "Question: {$questionString}";
+}
+
+function game(): void
+{
+    $userName = greet();
+    $gameRules = gameRules();
+    line($gameRules);
+    for ($i = 0; $i < 3; $i++) {
+        [$start, $step, $length, $hiddenIndex] = gameData();
+        $roundProgression = generateProgression($start, $step, $length);
+        $roundQuestion = gameQuestion($roundProgression, $hiddenIndex);
+        $roundCorrectAnswer = gameCorrectAnswer($roundProgression, $hiddenIndex);
+        $roundCompleted = gameEngine($userName, $roundQuestion, $roundCorrectAnswer);
+        if (!$roundCompleted) {
+            return;
+        }
+    }
+    line("Congratulations, {$userName}!");
+    return;
 }
