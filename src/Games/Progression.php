@@ -26,7 +26,7 @@ function generateProgression(int $start, int $step, int $length)
     return $progression;
 }
 
-function gameCorrectAnswer(array $progression, int $hiddenIndex): int
+function gameCorrectAnswer(array $progression, int $hiddenIndex): string
 {
     $hiddenElement = $progression[$hiddenIndex];
     return strval($hiddenElement);
@@ -44,7 +44,7 @@ function game(): void
     $userName = greet();
     $gameRules = gameRules();
     line($gameRules);
-    for ($i = 0; $i < 3; $i++) {
+    for ($i = 0; $i < $GLOBALS['rounds']; $i++) {
         [$start, $step, $length, $hiddenIndex] = gameData();
         $roundProgression = generateProgression($start, $step, $length);
         $roundQuestion = gameQuestion($roundProgression, $hiddenIndex);

@@ -21,6 +21,7 @@
     ],
     "autoload": {
         "files": [
+            "src/GameConfig.php",
             "src/Engine.php",
             "src/Cli.php",
             "src/Games/Even.php",

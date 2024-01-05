@@ -3,6 +3,8 @@
 
 require_once __DIR__ . '/../src/AutoloadPath.php';
 
-use BrainGames\Games\Even;
+use function BrainGames\Config\setGameConfig;
+use function BrainGames\Games\Even\game;
 
-Even\game();
+setGameConfig();
+game();

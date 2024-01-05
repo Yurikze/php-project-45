@@ -47,7 +47,7 @@ function game(): void
     $userName = greet();
     $gameRules = gameRules();
     line($gameRules);
-    for ($i = 0; $i < 3; $i++) {
+    for ($i = 0; $i < $GLOBALS['rounds']; $i++) {
         $roundData = gameData();
         $roundQuestion = gameQuestion($roundData);
         $roundCorrectAnswer = gameCorrectAnswer($roundData);

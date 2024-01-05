@@ -27,7 +27,7 @@ function isPrime(int $number): bool
     return $isPrime;
 }
 
-function gameCorrectAnswer($userAnswer): string
+function gameCorrectAnswer(int $userAnswer): string
 {
     return isPrime($userAnswer) ? 'yes' : 'no';
 }
@@ -42,7 +42,7 @@ function game(): void
     $userName = greet();
     $gameRules = gameRules();
     line($gameRules);
-    for ($i = 0; $i < 3; $i++) {
+    for ($i = 0; $i < $GLOBALS['rounds']; $i++) {
         $roundData = gameData();
         $roundQuestion = gameQuestion($roundData);
         $roundCorrectAnswer = gameCorrectAnswer($roundData);
