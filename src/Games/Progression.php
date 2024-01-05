@@ -16,8 +16,9 @@ function gameData(): array
     $start = rand(0, 5);
     $step = rand(1, 5);
     $length = rand(5, 11);
+    $progression = generateProgression($start, $step, $length);
     $hiddenIndex = rand(0, $length - 1);
-    return [$start, $step, $length, $hiddenIndex];
+    return [$progression, $hiddenIndex];
 }
 
 function generateProgression(int $start, int $step, int $length)
@@ -26,14 +27,16 @@ function generateProgression(int $start, int $step, int $length)
     return $progression;
 }
 
-function gameCorrectAnswer(array $progression, int $hiddenIndex): string
+function gameCorrectAnswer(array $gameData): string
 {
+    [$progression, $hiddenIndex] = $gameData;
     $hiddenElement = $progression[$hiddenIndex];
     return strval($hiddenElement);
 }
 
-function gameQuestion(array $progression, int $hiddenIndex): string
+function gameQuestion(array $gameData): string
 {
+    [$progression, $hiddenIndex] = $gameData;
     $progression[$hiddenIndex] = '..';
     $questionString = implode(' ', $progression);
     return "Question: {$questionString}";
@@ -45,10 +48,9 @@ function game(): void
     $gameRules = gameRules();
     line($gameRules);
     for ($i = 0; $i < $GLOBALS['rounds']; $i++) {
-        [$start, $step, $length, $hiddenIndex] = gameData();
-        $roundProgression = generateProgression($start, $step, $length);
-        $roundQuestion = gameQuestion($roundProgression, $hiddenIndex);
-        $roundCorrectAnswer = gameCorrectAnswer($roundProgression, $hiddenIndex);
+        $roundData = gameData();
+        $roundQuestion = gameQuestion($roundData);
+        $roundCorrectAnswer = gameCorrectAnswer($roundData);
         $roundCompleted = gameEngine($userName, $roundQuestion, $roundCorrectAnswer);
         if (!$roundCompleted) {
             return;
