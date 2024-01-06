@@ -2,10 +2,6 @@
 
 namespace BrainGames\Games\Gcd;
 
-use function BrainGames\Cli\greet;
-use function BrainGames\Engine\gameEngine;
-use function cli\line;
-
 function gameRules(): string
 {
     return 'Find the greatest common divisor of given numbers.';
@@ -40,22 +36,4 @@ function gameQuestion(array $gameData): string
 {
     [$number1, $number2] = $gameData;
     return "Question: {$number1} {$number2}";
-}
-
-function game(): void
-{
-    $userName = greet();
-    $gameRules = gameRules();
-    line($gameRules);
-    for ($i = 0; $i < $GLOBALS['rounds']; $i++) {
-        $roundData = gameData();
-        $roundQuestion = gameQuestion($roundData);
-        $roundCorrectAnswer = gameCorrectAnswer($roundData);
-        $roundCompleted = gameEngine($userName, $roundQuestion, $roundCorrectAnswer);
-        if (!$roundCompleted) {
-            return;
-        }
-    }
-    line("Congratulations, {$userName}!");
-    return;
 }

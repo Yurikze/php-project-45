@@ -2,10 +2,6 @@
 
 namespace BrainGames\Games\Prime;
 
-use function BrainGames\Cli\greet;
-use function BrainGames\Engine\gameEngine;
-use function cli\line;
-
 function gameRules(): string
 {
     return 'Answer "yes" if given number is prime. Otherwise answer "no".';
@@ -35,22 +31,4 @@ function gameCorrectAnswer(int $userAnswer): string
 function gameQuestion(int $randomNumber): string
 {
     return "Question: {$randomNumber}";
-}
-
-function game(): void
-{
-    $userName = greet();
-    $gameRules = gameRules();
-    line($gameRules);
-    for ($i = 0; $i < $GLOBALS['rounds']; $i++) {
-        $roundData = gameData();
-        $roundQuestion = gameQuestion($roundData);
-        $roundCorrectAnswer = gameCorrectAnswer($roundData);
-        $roundCompleted = gameEngine($userName, $roundQuestion, $roundCorrectAnswer);
-        if (!$roundCompleted) {
-            return;
-        }
-    }
-    line("Congratulations, {$userName}!");
-    return;
 }
