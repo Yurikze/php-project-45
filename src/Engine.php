@@ -3,24 +3,18 @@
 namespace BrainGames\Engine;
 
 use function BrainGames\Cli\greet;
-use function BrainGames\Config\setGameConfig;
 use function cli\line;
 use function cli\prompt;
 
-function gameEngine(string $namespace): void
+const GAME_ROUNDS = 3;
+
+function gameEngine(array $gameData): void
 {
-    setGameConfig();
-    $createGameRules = $namespace . '\gameRules';
-    $createGameData = $namespace . '\gameData';
-    $createGameQuestion = $namespace . '\gameQuestion';
-    $createGameCorrectAnswer = $namespace . '\gameCorrectAnswer';
+    [$gameRules, $roundsData] = $gameData;
     $userName = greet();
-    $gameRules = $createGameRules();
     line($gameRules);
-    for ($i = 0; $i < $GLOBALS['rounds']; $i++) {
-        $roundData = $createGameData();
-        $roundQuestion = $createGameQuestion($roundData);
-        $roundCorrectAnswer = $createGameCorrectAnswer($roundData);
+    for ($i = 0; $i < GAME_ROUNDS; $i += 1) {
+        [$roundQuestion, $roundCorrectAnswer] = $roundsData[$i];
         $userAnswer = prompt($roundQuestion);
         line("Your answer: {$userAnswer}");
         if ($userAnswer === $roundCorrectAnswer) {

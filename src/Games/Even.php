@@ -2,6 +2,10 @@
 
 namespace BrainGames\Games\Even;
 
+use function BrainGames\Engine\gameEngine;
+
+use const BrainGames\Engine\GAME_ROUNDS;
+
 function gameRules(): string
 {
     return 'Answer "yes" if the number is even, otherwise answer "no".';
@@ -25,4 +29,23 @@ function gameCorrectAnswer(int $randomNumber): string
 function gameQuestion(int $randomNumber): string
 {
     return "Question: {$randomNumber}";
+}
+
+function generateGameData()
+{
+    $roundsData = [];
+    $gameRules = gameRules();
+    for ($i = 0; $i < GAME_ROUNDS; $i += 1) {
+        $roundData = gameData();
+        $roundQuestion = gameQuestion($roundData);
+        $roundCorrectAnswer = gameCorrectAnswer($roundData);
+        $roundsData[] = [$roundQuestion, $roundCorrectAnswer];
+    }
+    return [$gameRules, $roundsData];
+}
+
+function game()
+{
+    $gameData = generateGameData();
+    gameEngine($gameData);
 }
