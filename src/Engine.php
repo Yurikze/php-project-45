@@ -8,13 +8,13 @@ use function cli\prompt;
 
 const GAME_ROUNDS = 3;
 
-function gameEngine(array $gameData): void
+function gameEngine(string $gameRules, callable $generateRoundData): void
 {
-    [$gameRules, $roundsData] = $gameData;
+    // [$gameRules, $roundsData] = $gameData;
     $userName = greet();
     line($gameRules);
     for ($i = 0; $i < GAME_ROUNDS; $i += 1) {
-        [$roundQuestion, $roundCorrectAnswer] = $roundsData[$i];
+        [$roundQuestion, $roundCorrectAnswer] = $generateRoundData();
         $userAnswer = prompt($roundQuestion);
         line("Your answer: {$userAnswer}");
         if ($userAnswer === $roundCorrectAnswer) {

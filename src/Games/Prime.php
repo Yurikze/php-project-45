@@ -2,14 +2,7 @@
 
 namespace BrainGames\Games\Prime;
 
-use function BrainGames\Engine\gameEngine;
-
-use const BrainGames\Engine\GAME_ROUNDS;
-
-function gameRules(): string
-{
-    return 'Answer "yes" if given number is prime. Otherwise answer "no".';
-}
+const GAME_RULES = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function gameData(): int
 {
@@ -37,21 +30,10 @@ function gameQuestion(int $randomNumber): string
     return "Question: {$randomNumber}";
 }
 
-function generateGameData()
+function generateRoundData()
 {
-    $roundsData = [];
-    $gameRules = gameRules();
-    for ($i = 0; $i < GAME_ROUNDS; $i += 1) {
-        $roundData = gameData();
-        $roundQuestion = gameQuestion($roundData);
-        $roundCorrectAnswer = gameCorrectAnswer($roundData);
-        $roundsData[] = [$roundQuestion, $roundCorrectAnswer];
-    }
-    return [$gameRules, $roundsData];
-}
-
-function game()
-{
-    $gameData = generateGameData();
-    gameEngine($gameData);
+    $roundData = gameData();
+    $roundQuestion = gameQuestion($roundData);
+    $roundCorrectAnswer = gameCorrectAnswer($roundData);
+    return [$roundQuestion, $roundCorrectAnswer];
 }

@@ -3,6 +3,8 @@
 
 require_once __DIR__ . '/../src/AutoloadPath.php';
 
-use function BrainGames\Games\Gcd\game;
+use const BrainGames\Games\Gcd\GAME_RULES;
 
-game();
+use function BrainGames\Engine\gameEngine;
+
+gameEngine(GAME_RULES, 'BrainGames\Games\Gcd\generateRoundData');

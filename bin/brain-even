@@ -1,8 +1,10 @@
 #!/usr/bin/env php
 <?php
 
+use const BrainGames\Games\Even\GAME_RULES;
+
 require_once __DIR__ . '/../src/AutoloadPath.php';
 
-use function BrainGames\Games\Even\game;
+use function BrainGames\Engine\gameEngine;
 
-game();
+gameEngine(GAME_RULES, 'BrainGames\Games\Even\generateRoundData');

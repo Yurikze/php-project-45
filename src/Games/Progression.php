@@ -2,14 +2,7 @@
 
 namespace BrainGames\Games\Progression;
 
-use function BrainGames\Engine\gameEngine;
-
-use const BrainGames\Engine\GAME_ROUNDS;
-
-function gameRules(): string
-{
-    return 'What number is missing in the progression?';
-}
+const GAME_RULES = 'What number is missing in the progression?';
 
 function gameData(): array
 {
@@ -42,21 +35,10 @@ function gameQuestion(array $gameData): string
     return "Question: {$questionString}";
 }
 
-function generateGameData()
+function generateRoundData()
 {
-    $roundsData = [];
-    $gameRules = gameRules();
-    for ($i = 0; $i < GAME_ROUNDS; $i += 1) {
-        $roundData = gameData();
-        $roundQuestion = gameQuestion($roundData);
-        $roundCorrectAnswer = gameCorrectAnswer($roundData);
-        $roundsData[] = [$roundQuestion, $roundCorrectAnswer];
-    }
-    return [$gameRules, $roundsData];
-}
-
-function game()
-{
-    $gameData = generateGameData();
-    gameEngine($gameData);
+    $roundData = gameData();
+    $roundQuestion = gameQuestion($roundData);
+    $roundCorrectAnswer = gameCorrectAnswer($roundData);
+    return [$roundQuestion, $roundCorrectAnswer];
 }

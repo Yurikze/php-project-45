@@ -1,8 +1,10 @@
 #!/usr/bin/env php
 <?php
 
-use function BrainGames\Games\Prime\game;
-
 require_once __DIR__ . '/../src/AutoloadPath.php';
 
-game();
+use const BrainGames\Games\Prime\GAME_RULES;
+
+use function BrainGames\Engine\gameEngine;
+
+gameEngine(GAME_RULES, 'BrainGames\Games\Prime\generateRoundData');
