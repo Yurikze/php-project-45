@@ -1,10 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+use function BrainGames\Engine\gameEngine;
+
 require_once __DIR__ . '/../src/AutoloadPath.php';
 
-use function BrainGames\Config\setGameConfig;
-use function BrainGames\Games\Prime\game;
-
-setGameConfig();
-game();
+gameEngine('BrainGames\Games\Prime');

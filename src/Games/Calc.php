@@ -2,10 +2,6 @@
 
 namespace BrainGames\Games\Calc;
 
-use function BrainGames\Cli\greet;
-use function BrainGames\Engine\gameEngine;
-use function cli\line;
-
 function gameRules(): string
 {
     return 'What is the result of the expression?';
@@ -45,22 +41,4 @@ function gameQuestion(array $gameData): string
 {
     [$randomNumber1, $randomNumber2, $operator] = $gameData;
     return "Question: {$randomNumber1} {$operator} {$randomNumber2}";
-}
-
-function game(): void
-{
-    $userName = greet();
-    $gameRules = gameRules();
-    line($gameRules);
-    for ($i = 0; $i < $GLOBALS['rounds']; $i++) {
-        $roundData = gameData();
-        $roundQuestion = gameQuestion($roundData);
-        $roundCorrectAnswer = gameCorrectAnswer($roundData);
-        $roundCompleted = gameEngine($userName, $roundQuestion, $roundCorrectAnswer);
-        if (!$roundCompleted) {
-            return;
-        }
-    }
-    line("Congratulations, {$userName}!");
-    return;
 }

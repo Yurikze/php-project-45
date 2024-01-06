@@ -2,10 +2,6 @@
 
 namespace BrainGames\Games\Even;
 
-use function cli\line;
-use function BrainGames\Cli\greet;
-use function BrainGames\Engine\gameEngine;
-
 function gameRules(): string
 {
     return 'Answer "yes" if the number is even, otherwise answer "no".';
@@ -29,22 +25,4 @@ function gameCorrectAnswer(int $randomNumber): string
 function gameQuestion(int $randomNumber): string
 {
     return "Question: {$randomNumber}";
-}
-
-function game(): void
-{
-    $userName = greet();
-    $gameRules = gameRules();
-    line($gameRules);
-    for ($i = 0; $i < $GLOBALS['rounds']; $i++) {
-        $roundData = gameData();
-        $roundQuestion = gameQuestion($roundData);
-        $roundCorrectAnswer = gameCorrectAnswer($roundData);
-        $roundCompleted = gameEngine($userName, $roundQuestion, $roundCorrectAnswer);
-        if (!$roundCompleted) {
-            return;
-        }
-    }
-    line("Congratulations, {$userName}!");
-    return;
 }
